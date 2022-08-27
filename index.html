@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,31 +9,35 @@
     <title>Rock Paper Scissors</title>
     <script src="javascript.js" defer></script>
 </head>
+
 <body>
     <div class="container">
-        <div class="game-images">
-            <div class="image-box">
-                <div id="player">
-                    <img class="bottom" src="images/paper.jpg" />
-                    <img class="top" src="images/questionMark.jpg" />
+        <h1 id="title">Rock, Paper, Scissors</h1>
+        <h2>Best of 5</h1>
+            <div class="game-images">
+                <div class="image-box">
+                    <div id="player">
+                        <img class="bottom" src="images/paper.jpg" />
+                        <img class="top" src="images/questionMark.jpg" />
+                    </div>
+                    <h2 id="player-score">Player</h2>
                 </div>
-                <h2>Player</h2>
-            </div>
-            <h1>V.S.</h1>
-            <div class="image-box">
-                <div id="computer">
-                    <img class="bottom" src="images/paper.jpg" />
-                    <img class="top" src="images/questionMark.jpg" />
+                <h1>V.S.</h1>
+                <div class="image-box">
+                    <div id="computer">
+                        <img class="bottom" src="images/paper.jpg" />
+                        <img class="top" src="images/questionMark.jpg" />
+                    </div>
+                    <h2 id="computer-score">Computer</h2>
                 </div>
-                <h2>Computer</h2>
+
             </div>
-            
-        </div>
-        <div class="buttons">
-            <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissors">Scissors</button>
-        </div>
+            <div class="buttons">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
     </div>
 </body>
+
 </html>

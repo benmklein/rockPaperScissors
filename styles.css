@@ -1,86 +1,153 @@
-body{
+body {
     display: flex;
     justify-content: center;
     background-color: #413d8f;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    color: #ffffff;
+
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* justify-content: center; */
-    height: 600px;
+    height: 675px;
     width: 800px;
     gap: 10px;
     margin-top: 30px;
     background-color: #ffffff;
     border-radius: 10px;
-    justify-content: space-between;
+    color: #413d8f;
+    /* justify-content: space-between; */
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 5%), 0 4px 6px 0 rgb(0 0 0 / 5%), 0 8px 10px 0 rgb(0 0 0 / 5%), 0 14px 18px 0 rgb(0 0 0 / 5%), 0 26px 32px 0 rgb(0 0 0 / 10%), 0 0 0 1px rgb(0 0 0 / 5%);
+    /* opacity: 1; */
+    /* transition: all 1000ms ease-in; */
 }
-.buttons{
+
+.container.removed {
+    opacity: 0;
+    transition: all 1000ms ease-in;
+}
+
+.buttons {
     /* border: 2px solid red; */
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
+    padding: 60px;
     display: flex;
     gap: 15px;
+    height: 50px;
+    width: 510px;
 }
+
 button {
     flex: none;
     padding: 5px 10px;
     height: 50px;
     width: 160px;
-    background-color: #4b42ff;
     color: #ffffff;
     border-radius: 5px;
     border: none;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 5%), 0 4px 6px 0 rgb(0 0 0 / 5%), 0 8px 10px 0 rgb(0 0 0 / 5%), 0 14px 18px 0 rgb(0 0 0 / 5%), 0 26px 32px 0 rgb(0 0 0 / 10%), 0 0 0 1px rgb(0 0 0 / 5%);
+    letter-spacing: 0px;
+    background-color: #4b42ff;
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    transition: all 100ms ease-out;
+    font-size: 14px;
+
 }
-.game-images{
-    margin-top: 80px;
-    display:flex;
+
+button:hover:enabled {
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+    transition: all 100ms ease-out;
+    letter-spacing: 1px;
+
+    outline: 1px solid;
+    outline-color: rgba(243, 255, 79, 0.5);
+    outline-offset: 0px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    pointer-events: all !important;
+    background-color: #413d8f;
+    transition: all 100ms ease-out;
+}
+
+.game-images {
+    margin-top: 40px;
+    display: flex;
     gap: 10px;
     align-items: center;
     color: #413d8f;
     padding: 0px 30px;
 }
-.image-box > h2 {
+
+.image-box>h2 {
     margin: 5px 0px;
+
 }
-.image-box{
+
+.image-box {
     text-align: center;
-}
-#player,
-#computer {
-    /* position:relative; */
-    /* left: 100px; */
-    /* height:281px;
-    width:450px; */
-    /* margin:0 auto; */
-    /* height: 600px; */
 }
 
 #player img,
 #computer img {
-    
-    /* position:absolute; */
-    /* left:150; */
-    /* top:10; */
-    /* top: -150px; */
-    -webkit-transition: opacity 1s ease-in-out;
-    -moz-transition: opacity 1s ease-in-out;
-    -o-transition: opacity 1s ease-in-out;
-    transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in;
+    -moz-transition: opacity 1s ease-in;
+    -o-transition: opacity 1s ease-in;
+    transition: opacity 1s ease-in;
     height: 300px;
-  }
+}
+
 img.top {
     margin-top: -300px;
 }
-img.bottom{
+
+img.bottom {
     margin-bottom: -21px;
+    box-shadow: 0 2px 2px 0 rgb(0 0 0 / 5%), 0 4px 6px 0 rgb(0 0 0 / 5%), 0 8px 10px 0 rgb(0 0 0 / 5%), 0 14px 18px 0 rgb(0 0 0 / 5%), 0 16px 22px 0 rgb(0 0 0 / 10%), 0 0 0 1px rgb(0 0 0 / 5%)
 }
+
 img.top.active {
-    opacity:0;
-  }
-h2{
+    opacity: 0;
+}
+
+.game-images h2 {
     margin: 0px;
     padding: 0px;
+    font-weight: 700;
+}
+
+.game-images h1 {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.container>h2 {
+    font-style: italic;
+    font-weight: 300;
+    margin: 0px;
+}
+
+.container>h1 {
+    margin-bottom: 0px;
+}
+
+.end-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    margin-top: 20vh;
+    opacity: 1;
+    transition: all 2000ms ease-in;
+    font-size: 30px;
+}
+.end-text.invisible{
+    opacity: 0;
 }

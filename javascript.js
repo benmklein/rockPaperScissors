@@ -1,9 +1,18 @@
-let buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button');
 const playerTopCard = document.querySelector('#player > .top');
 const computerTopCard = document.querySelector('#computer > .top');
 const playerBottomCard = document.querySelector('#player > .bottom');
 const computerBottomCard = document.querySelector('#computer > .bottom');
 const CHOICES = ['rock', 'paper', 'scissors'];
+
+
+function updateScore(arr) {
+    const computerScoreText = document.querySelector('#computer-score');
+    const playerScoreText = document.querySelector('#player-score');
+    playerScoreText.textContent = 'Player: ' + arr[0];
+    computerScoreText.textContent = 'Computer: ' + arr[1];
+}
+
 
 // add event listeners to buttons that will play a round with the player's choice and return the result
 function initGame() {
@@ -26,20 +35,29 @@ function initGame() {
     return promise;
 }
 
-// disable button listeners
-function endGame() {
+function disableButtons() {
     buttons.forEach((btn) => {
-        var new_element = btn.cloneNode(true);
-        btn.parentNode.replaceChild(new_element, btn);
+        btn.disabled = true;
+    });
+}
+
+function enableButtons() {
+    buttons.forEach((btn) => {
+        btn.disabled = false;
     });
 }
 
 function revealCards() {
+    disableButtons();
     playerTopCard.classList.add('active');
     computerTopCard.classList.add('active');
     setTimeout(() => {
         playerTopCard.classList.remove('active');
         computerTopCard.classList.remove('active');
+    }, 2500);
+    //after animation finishes, enable buttons
+    setTimeout(() => {
+        enableButtons();
     }, 3500);
 }
 
@@ -65,6 +83,28 @@ function playRound(playerSelection, computerSelection) {
     return 'invalid';
 }
 
+function endGame(result) {
+    // create a div, put result text in it, and fade out the game container
+    const body = document.querySelector('body');
+    let container = document.querySelector('.container');
+    
+    let endText = document.createElement('h1');
+    let endTextContainer = document.createElement('div');
+    endTextContainer.classList.add('end-text', 'invisible');
+    endTextContainer.classList.remove('invisible');
+    
+    endTextContainer.appendChild(endText);
+    body.appendChild(endTextContainer);
+    
+    endText.textContent = result;
+    container.classList.add('removed');
+    
+    setTimeout( () => {
+        container.remove();
+    },2000);
+    console.log(result);
+}
+
 
 async function runGame() {
     // runs 5 rounds of RPS
@@ -88,10 +128,16 @@ async function runGame() {
                 break;
         }
         console.log('Current score out of 5 rounds: ' + score[0] + ' wins, ' + score[1] + ' losses, ' + score[2] + ' ties.');
+        setTimeout(() => {
+            updateScore(score);
+        }, 1200);
     }
-    if (score[0] > score[1]) console.log('You won!');
-    if (score[1] > score[0]) console.log('You lost.');
-    endGame();
+    let gameResult = (score[0] > score[1]) ? 'You won!' : 'You lost.';
+    disableButtons();
+    setTimeout(() => {
+        endGame(gameResult);
+    }, 2000);
 }
 
 runGame();
+// endGame('test');
